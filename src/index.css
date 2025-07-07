@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Modern Negra";
+  src: url("/fonts/ModernNegra-Regular.woff2") format("woff2");
+}
+
+@theme {
+  --color-yellow: #F9F871;
+  --color-white: #FFFFFF;
+  --font-sans: "Poppins", sans-serif;
+  --font-modern-negra: "Modern Negra", sans-serif;
+  --font-serif: "serif";
+}
+
+html,
+body {
+  width: 100%;
+  background-color: #000;
+  color: var(--color-white);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+}
+
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@utility col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+@utility col-start {
+  @apply flex flex-col justify-start items-start;
+}
+
+@utility abs-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility text-gradient {
+  background: linear-gradient(to right, var(--color-yellow), var(--color-white));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility radial-gradient {
+  background: radial-gradient(circle, var(--color-yellow), var(--color-white));
+}
+
+@utility mask-image {
+  mask-image: url("/images/mask-img.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 50%;
+}
+
+@layer components {
+  main {
+    @apply w-full overflow-x-hidden;
+  }
+
+  nav {
+    @apply fixed z-50 w-full;
+
+    div {
+      @apply flex md:flex-row flex-col justify-between items-center;
+    }
+
+    p {
+      @apply font-modern-negra text-2xl;
+    }
+
+    a {
+      @apply cursor-pointer text-nowrap md:text-base text-sm;
+    }
+
+    ul {
+      @apply flex-center lg:gap-12 gap-8;
+    }
+  }
+  
+  .noisy {
+    @apply absolute inset-0 size-full bg-[url('/images/noisy-bg.png')] bg-cover bg-center;
+  }
+
+  #hero {
+    @apply relative z-10 min-h-dvh w-full border border-transparent;
+
+    h1 {
+      @apply md:mt-32 mt-20 md:text-7xl text-5xl font-serif;
+    }
+
+    .left-leaf {
+      @apply absolute left-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto bottom-0;
+    }
+
+    .right-leaf {
+      @apply absolute right-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto bottom-0;
+    }
+
+    .hero-img {
+      @apply absolute inset-0 size-full object-cover;
+    }
+
+    .body {
+      @apply container mx-auto px-4 md:px-6 lg:px-8;
+
+      .content {
+        @apply flex lg:flex-row flex-col justify-between items-center;
+
+        p:nth-of-type(2) {
+          @apply font-modern-negra text-2xl;
+        }
+
+        p:nth-of-type(3) {
+          @apply font-modern-negra text-2xl;
+        }
+
+        p:nth-of-type(4) {}
+      }
+    }
+  }
+
+}
